@@ -27,11 +27,12 @@ def start(input_file, output_extension):
         # FFmpeg command for file conversion
         command = [
             'ffmpeg',
-            '-i', input_file,  # Input file
-            '-y',             # Overwrite output file if it exists
-            output_file       # Output file
+            '-i', input_file,
+            '-codec:a', 'libmp3lame',
+            '-b:a', '320k',  # Setzt die Bitrate auf 320 kbps
+            '-y',
+            output_file
         ]
-        
         try:
             result = subprocess.run(
                 command,
