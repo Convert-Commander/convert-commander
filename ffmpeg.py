@@ -2,7 +2,7 @@ import subprocess
 import shutil
 import os
 
-def start(input_file, output_extension):
+def start(input_file, output_extension, bitrate):
     """
     Converts a media file to the desired format using FFmpeg.
     
@@ -11,6 +11,8 @@ def start(input_file, output_extension):
         output_extension (str): Desired output format (e.g., 'mp4', 'mp3', 'wav')
     """
     def convert_file(input_file, output_file):
+        nonlocal bitrate
+
         if not os.path.exists(input_file):
             print(f"Input file '{input_file}' does not exist.")
             return False
@@ -23,14 +25,28 @@ def start(input_file, output_extension):
             except OSError as e:
                 print(f"Error creating output directory: {e}")
                 return False
-        
-        # FFmpeg command for file conversion
-        command = [
-            'ffmpeg',
-            '-i', input_file,  # Input file
-            '-y',             # Overwrite output file if it exists
-            output_file       # Output file
-        ]
+        print(output_extension)
+        if output_extension == "mp3":
+            print("mp3")
+            if bitrate == "":  
+                bitrate = "320k"
+            command = [
+                'ffmpeg',
+                '-i', input_file,
+                '-codec:a', 'libmp3lame',
+                '-b:a', bitrate,
+                '-y',
+                output_file
+            ]
+            print(bitrate)
+        else:
+            # FFmpeg command for file conversion
+            command = [
+                'ffmpeg',
+                '-i', input_file,  # Input file
+                '-y',             # Overwrite output file if it exists
+                output_file       # Output file
+            ]
         
         try:
             result = subprocess.run(

@@ -47,6 +47,7 @@ def delete_files_in_folder(folder_path):
 
 def convert_file(filepath, target_format):
     """Convert a single file based on its target format"""
+    bitrate = "128k"
     try:
         if target_format in libreoffice_formats:
             print(f"Converting with Libreoffice: {filepath}")
@@ -56,7 +57,7 @@ def convert_file(filepath, target_format):
             pandoc.start(filepath, target_format)
         elif target_format in ffmpeg_formats:
             print(f"Converting with Ffmpeg: {filepath}")
-            ffmpeg.start(filepath, target_format)
+            ffmpeg.start(filepath, target_format, bitrate)
         return True
     except Exception as e:
         print(f"Error converting {filepath}: {e}")
