@@ -22,7 +22,7 @@ Ubuntu and Dabian
    First, clone the repository to your system:
 
    ```bash
-   git clone https://github.com/Benzauber/convert-commander.git
+   git clone https://github.com/Convert-Commander/convert-commander.git
    ```
 
 ### Installation Script
