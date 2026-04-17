@@ -4,7 +4,6 @@
 ## What is Convert-Commander
 Convert-Commander is an open-source solution that you can easily install on your own server. With Convert-Commander, you can convert files directly on your locally hosted server without uploading sensitive data to external servers. All conversions are handled securely and exclusively on your own system, ensuring your data remains protected and under your control. Install Convert-Commander via GitHub and enjoy the benefits of a secure and flexible file conversion solution tailored to your needs.
 
-Web: [cc.bleibundgut.ch](https://cc.bleibundgut.ch)
 
 ## Which file can you convert?
 
